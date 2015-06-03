@@ -1,0 +1,50 @@
+<style>@import "css/base.css";</style>
+
+<section id="todoapp">
+
+  <header id="header">
+    <h1>todos</h1>
+    <!-- snippet:m1 -->
+    <input
+      id="new-todo"
+      placeholder="What needs to be done?"
+      autofocus
+      #newtodo
+      (keyup)="enterTodo($event, newtodo)">
+  </header>
+
+  <section id="main">
+    <!-- snippet:m5 -->
+    <input id="toggle-all" type="checkbox" (click)="toggleAll($event)">
+    <label for="toggle-all">Mark all as complete</label>
+    
+    <!-- snippet: m2 -->
+    <ul id="todo-list">
+
+      <li *for="#todo of todoService.list">
+
+        <!-- todo item-->
+        <div class="view">
+          
+          <!-- snippet:m3 -->
+          <input class="toggle" type="checkbox"
+                 (click)="completeMe(todo)"
+                 [checked]="todo.completed">
+
+          <label>{{todo.title}}</label>
+          <button class="destroy" (click)="deleteMe(todo)"></button>
+
+        </div>
+
+      </li>
+    </ul>
+
+  </section>
+
+  <footer id="footer">
+    <!-- snippet:m4 -->
+    <button id="clear-completed" (click)="clearCompleted()">Clear completed</button>
+  </footer>
+
+</section>
+
